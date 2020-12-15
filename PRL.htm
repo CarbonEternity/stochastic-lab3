@@ -1,0 +1,126 @@
+<html>
+<head>
+<TITLE>Passage of radiation through the layer</TITLE>
+
+<script>
+	var x0 = 0;  var tet0 = 0; var cos0 = 1.0; 
+	
+	var h = 2; 
+	var mu = 1; var kr = 1; var pa = 0.001;
+	
+	var Ns = 10000;
+
+	var F = 0; var B = 0; var Ab = 0;
+
+function PasRad() {
+
+	for (var i = 1; i <= Ns; i++) {
+	var x = x0;  var cs = cos0;
+	while(true) {
+with(Math) {
+	g=random(); l = -log(g)/mu;   				//On slide number 3 Lec_11
+	
+	x1 = x + l*cs;  							//On slide number 4 Lec_11
+
+	if(x1<0) {B++; break;}  					//On slide number 5 Lec_11
+	if(x1>h) {F++; break;}
+	
+	g=random(); if(g<pa) {Ab++; break;}   			//On slide number 6 Lec_11
+	
+	g=random(); Com = pow(g,1/(kr+1));				//On slide number 7 Lec_11
+	g=random(); Sfi = sin(2*3.1415927*g);
+	cos1 = cs*Com - sqrt((1-cs*cs)*(1-Com*Com))*Sfi;	//On slide number 8 Lec_11
+	
+	x = x1; cs = cos1; 
+}				}
+	}
+document.frm.F.value = MytoStr(F/Ns,3);
+document.frm.B.value = MytoStr(B/Ns,3);
+document.frm.Ab.value = MytoStr(Ab/Ns,3);
+
+Fns = F/Ns; SF = Math.sqrt(Fns*(1-Fns)/Ns);
+document.frm.SF.value = MytoStr(SF,4);
+Bns = B/Ns; SB = Math.sqrt(Bns*(1-Bns)/Ns);
+document.frm.SB.value = MytoStr(SB,4);
+Ans = Ab/Ns; SAb = Math.sqrt(Ans*(1-Ans)/Ns);
+document.frm.SAb.value = MytoStr(SAb,4);
+}	
+
+function MytoStr (x,k) {
+var MyStr= new String(x);
+var srr=""; 
+for (var i=0; i<k+2; i++)
+srr+=MyStr.charAt(i);
+return srr;
+} 
+
+function stt() {
+tet0 = document.frm.tet0.value*1.0;
+cos0 = Math.cos(3.1415927*tet0/180); 
+h = document.frm.h.value*1.0;
+mu = document.frm.mu.value*1.0;
+if (mu>0) mu =1/mu; else {mu =1; document.frm.mu.value = mu;}
+pa = document.frm.pa.value*1.0;
+kr = document.frm.kr.value*1;
+
+Ns = document.frm.Ns.value*1;
+
+F = 0; B = 0; Ab = 0;
+PasRad(); 
+}
+
+/*
+if (C1P1>0) C10P1 =SiCP1/C1P1*Nst*100; else C10P1 =0;  
+document.frm.DP1.value = MytoStr(C10P1,3);
+*/
+
+</script>
+
+</head>
+<BODY text=#000055 bgColor=#ffffff >
+<FORM name=frm>
+<CENTER><br><img src="Lec_11.jpg"> <br>  <br>
+<TABLE ALIGN=CENTER BORDER=5  CELLSPACING=1 CELLPADDING=5 
+BGCOLOR="#eeeeee" >
+<TR ALIGN=CENTER VALIGN=CENTER>
+<TD><font size=+1> Model parameters</font></TD>
+<TD><font color=#337700 size=+1>Interaction parameters</font></TD>
+<TD><font color=#990000 size=+1>Average values</font></TD>
+<TD><font color=#990000 size=+1>Uncertainty</font></TD>
+</TR>
+<TR  align=right>
+<TD> Angle of incidence - <INPUT size=2 value=45 name=tet0 ></TD>
+<TD><font color=#337700>Mean free path - </font><INPUT size=3 value=1 name=mu></TD>
+<TD><font color=#990000>Transmission ratio</font> - &nbsp;<INPUT size=3 value=0 name="F" 
+   onFocus="this.blur(); return true"></TD>
+<TD><font color=#000099 size=+1></font>&nbsp;&nbsp;<INPUT size=4 value=0 name="SF"
+   onFocus="this.blur(); return true"></TD>
+</TR>
+<TR  align=right>
+<TD>Layer thickness &nbsp;-&nbsp; <INPUT size=2 value=2 name=h ></TD>
+<TD><font color=#337700>Absorption prob. -&nbsp; </font><INPUT size=3 value=0.001 name=pa ></TD>
+<TD><font color=#990000>Reflection coeff.</font> - &nbsp;<INPUT size=3 value=0 name="B"
+   onFocus="this.blur(); return true"></TD>
+<TD><font color=#000099 size=+1></font><INPUT size=4 value=0 name="SB"
+   onFocus="this.blur(); return true"></TD>
+</TR>
+<TR  align=right>
+<TD ALIGN=CENTER VALIGN=CENTER> --- </TD>
+<TD><font color=#337700>Scatter parameter - </font><INPUT size=3 value=1 name=kr ></TD>
+<TD><font color=#990000>Absorption coeff.- <INPUT size=3 value=0 name="Ab"
+   onFocus="this.blur(); return true"></TD>
+<TD><font color=#000099 size=+1></font><INPUT size=4 value=0 name="SAb"
+   onFocus="this.blur(); return true"></TD>
+</TR>
+<TR  align=right>
+<TD>Statistics &nbsp;&nbsp;-&nbsp;&nbsp; <INPUT size=5 value=10000 name=Ns ></TD>
+<TD  ALIGN=CENTER VALIGN=CENTER><INPUT type = "button" value=" Start " onClick ="stt();"></TD>
+<TD ALIGN=CENTER colspan=2><font color=#990000 size=+2>Modeling results</font></TD>
+</TR>
+
+</TABLE>
+</CENTER>
+</FORM>
+</BODY>
+
+</html>
