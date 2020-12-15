@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: #fadfdf;" minHeight="-Infinity" minWidth="-Infinity" prefHeight="204.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.karazina.controller.Controller">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="0.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="0.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="0.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="0.0" prefWidth="200.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="0.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="100.0" minHeight="0.0" prefHeight="50" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="100.0" minHeight="0.0" prefHeight="50" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="100.0" minHeight="0.0" prefHeight="50" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="100.0" minHeight="0.0" prefHeight="50" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Label text="Model parameters" style="-fx-text-fill: #010201; -fx-font-weight: bold"/>
+      <Label prefHeight="36.0" prefWidth="174.0" text="Interaction parameters" GridPane.columnIndex="1" style="-fx-text-fill: #45e750; -fx-font-weight: bold"/>
+      <Label text="Average values" GridPane.columnIndex="2" style="-fx-text-fill: #f33421; -fx-font-weight: bold"/>
+      <Label text="Uncertainty" GridPane.columnIndex="3" style="-fx-text-fill: #9510e8; -fx-font-weight: bold"/>
+      <FlowPane GridPane.columnIndex="3" GridPane.rowIndex="1">
+         <children>
+            <Label text=" " />
+            <TextField fx:id="uncertaintyZeroField" text="0" maxWidth="80" />
+         </children>
+      </FlowPane>
+      <FlowPane GridPane.columnIndex="3" GridPane.rowIndex="2">
+         <children>
+            <Label text=" " />
+            <TextField fx:id="uncertaintyOneField" text="0" maxWidth="80"/>
+         </children>
+      </FlowPane>
+      <FlowPane GridPane.columnIndex="3" GridPane.rowIndex="3">
+         <children>
+            <Label text=" " />
+            <TextField fx:id="uncertaintySecondField" text="0" maxWidth="80"/>
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="300.0" prefWidth="300.0" minWidth="300" GridPane.rowIndex="1">
+         <children>
+            <Label text="Angle of incidence -" style="-fx-text-fill: #010201; -fx-font-weight: bold"/>
+            <TextField fx:id="angleOfIncidenceField" text="45" maxWidth="50" />
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Label text="Mean free path -" style="-fx-text-fill: #45e750; -fx-font-weight: bold"/>
+            <TextField fx:id="meanFreePathField" text="1" maxWidth="50"/>
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+            <Label text="Transmission ratio -" style="-fx-text-fill: #f33421; -fx-font-weight: bold"/>
+            <TextField fx:id="transmissionRatioField" text="0" maxWidth="50" />
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="209.0" prefWidth="152.0" GridPane.rowIndex="2">
+         <children>
+            <Label text="Layer thickness  - " style="-fx-text-fill: #010201; -fx-font-weight: bold"/>
+            <TextField fx:id="layerThicknessField" text="2" maxWidth="50"/>
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <Label text="Absorption prob. -" style="-fx-text-fill: #45e750; -fx-font-weight: bold"/>
+            <TextField fx:id="absorptionProbField" text="0.001" maxWidth="50"/>
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <children>
+            <Label text="Reflection coeff. - " style="-fx-text-fill: #f33421; -fx-font-weight: bold"/>
+            <TextField fx:id="reflectionCoeffField" text="0" maxWidth="50"/>
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <children>
+            <Label text="Scatter parameter -" style="-fx-text-fill: #45e750; -fx-font-weight: bold"/>
+            <TextField fx:id="scatterParameterField" text="1" maxWidth="50"/>
+         </children>
+      </FlowPane>
+      <Label text="---" GridPane.rowIndex="3" />
+      <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <children>
+            <Label text="Absorption coeff.-" style="-fx-text-fill: #f33421; -fx-font-weight: bold"/>
+            <TextField fx:id="absorptionCoeffField" text="0" maxWidth="50"/>
+         </children>
+      </FlowPane>
+      <Label text="Modeling results" style="-fx-text-fill: #f33421; -fx-font-weight: bold" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+         <children>
+            <Label text="Statistics   - " style="-fx-text-fill: #010201; -fx-font-weight: bold"/>
+            <TextField fx:id="statisticsField" text="10000" maxWidth="80"/>
+         </children>
+      </FlowPane>
+      <Button mnemonicParsing="false" onAction="#onStartButtonClick" text="Start" minWidth="150" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" text="Stop" minWidth="150" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Label text="Progress   - "  GridPane.rowIndex="5"  GridPane.halignment="RIGHT" style="-fx-text-fill: #010201; -fx-font-weight: bold"/>
+      <ProgressBar fx:id="progressBar" progress="1" minWidth="500" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5"/>
+   </children>
+   <padding>
+      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+   </padding>
+</GridPane>
